@@ -1,0 +1,25 @@
+Instructions for Using this Repository
+
+Step 1: Install Dependencies
+- Make sure you have python installed. You can do this by going to https://www.python.org/downloads/ 
+and following the directions from there based on the operating system you're using.
+- Make sure you have pygame installed. You can do this via terminal, which I'll explain below.
+Step 2: Using Terminal
+- For Mac users, you can locate your terminal by searching "terminal" in finder and clicking on the terminal app. 
+For windows users, you can do a similar thing and search "terminal" in Windows Search.
+For Linux users, why/how are you even using Linux if you can't find your terminal.
+- Once terminal is open, you need to ensure that you're in your home directory. Do this by typing "cd" 
+and pressing enter-- you should be able to see your text in the command line as you type.
+- Now, to install pygame, type "pip3 install pygame" or if this doesn't work, try "pip install pygame".
+- Once that's done running, you're ready to download this repository and run the app!
+Step 3: Downloading the Repository
+- You should be able to just download and unzip the repository file from this page. Navigate to the repository homepage and 
+click the "code" button. From there, you should be able to click "download zip". Now, make sure to unzip this file (you can use a decompressor of your choice).
+- You're all set to run the app! Open terminal again, make sure you're in the correct folder by typing "cd bonesquiz", and then type this command into the terminal and press enter:
+
+"python3 bones.py"
+
+Step 4: Using the App
+You'll be prompted to answer the quiz using the text box below the image. Type in your answer (answers must start with a capital letter), and press enter. 
+If you're correct, the game will let you know and proceed to the next question. Otherwise, it will tell you you're wrong and you'll have to try again. 
+You can quit the game at any time by pressing the "x" in the top left corner of the game window. Enjoy!
