@@ -2,6 +2,7 @@ import pygame
 import os
 import random
 import sys
+from pygame.locals import *
 
 # Initialize Pygame
 pygame.init()
@@ -18,6 +19,8 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 PERI = (204, 204, 255)
 BLACK = (0,0,0)
+STUPID_COLOR = (250, 225, 223)
+GOOD_GREEN = (189, 228, 167)
 
 # Set up the fonts
 font = pygame.font.SysFont(None, 48)
@@ -25,8 +28,7 @@ font = pygame.font.SysFont(None, 48)
 # Define button and image positions
 image_rect = pygame.Rect(100, 50, 600, 300)  # Placeholder for the bone image
 textbox = pygame.Rect(250, 400, 300, 100)
-back_button_rect = pygame.Rect(0, 550, 80, 40)  # Placeholder for the back button
-next_button_rect = pygame.Rect(700, 550, 80, 40)  # Placeholder for the next button
+button = pygame.Rect(350, 525, 100, 50)
 text = ''
 color_inactive = pygame.Color('lightskyblue3')
 color_active = pygame.Color('dodgerblue2')
@@ -107,6 +109,23 @@ correct_dict = {
     **{f'sphenoid{i}.png': 'Sphenoid' for i in range(1, 6)},
 }
 
+def addText():
+    font = pygame.font.SysFont(None, 20)
+    text_surface = font.render('I am an idiot', True, (0, 0, 0))
+
+    # Get the size of the text surface
+    text_width, text_height = text_surface.get_size()
+
+    # Calculate the position to center the text within the button
+    text_x = button.centerx - text_width // 2
+    text_y = button.centery - text_height // 2
+
+    # Blit the text surface at the calculated position
+    screen.blit(text_surface, (text_x, text_y))
+
+    # Update the display
+    pygame.display.update()
+
 def load_random_image():
     global bone_image, bone_image_rect
     image_name = random.choice(boneslist)  # Select a random image
@@ -119,23 +138,25 @@ img = load_random_image()  # Load the initial image
 
 # Function to draw the main quiz screen
 def draw_quiz_screen(correct=None):
-    screen.fill(PERI)
+    screen.fill(STUPID_COLOR)
 
     # Draw the bone image placeholder
-    pygame.draw.rect(screen, (200, 200, 200), image_rect)
+    pygame.draw.rect(screen, STUPID_COLOR, image_rect)
     screen.blit(bone_image, bone_image_rect)
     
     # Draw the answer button
-    pygame.draw.rect(screen, (220, 220, 220), textbox)
+    pygame.draw.rect(screen, (228, 195, 173), textbox)
     txt_surface = font.render(text, True, BLACK)
     screen.blit(txt_surface, (textbox.x+5, textbox.y+5))
 
-    
+    #Draw the give up button
+    pygame.draw.rect(screen, (84, 106, 123), button)
+    addText()
     pygame.display.flip()
 
 def draw_result_screen(is_correct):
     # Choose the color and text based on whether the answer is correct
-    result_color = GREEN if is_correct else RED
+    result_color = GOOD_GREEN if is_correct else RED
     result_text = "Correct!" if is_correct else "Incorrect!"
     
     # Draw the result screen
@@ -151,9 +172,33 @@ def is_correct(text, image_name):
     else:
         return False
 
+def draw_answer_screen():
+    # Choose the color and text based on whether the answer is correct
+    result_color = GOOD_GREEN
+    result_text = correct_dict[img]
+    # Draw the result screen
+    screen.fill(result_color)
+    text_surface = font.render(result_text, True, WHITE)
+    text_rect = text_surface.get_rect(center=(window_width // 2, window_height // 2))
+    screen.blit(text_surface, text_rect)
+    pygame.display.flip()
+
 # Main loop
 running = True
 while running:
+    if show_result_screen:
+        if is_correct(text, img) == True:
+            draw_result_screen(True)
+            pygame.time.wait(2000)
+            img = load_random_image()
+        else:
+            draw_result_screen(False)
+            pygame.time.wait(1000)
+        # Wait for a bit before moving on
+        show_result_screen = False  # Reset the flag
+        text = ''
+    else:
+        draw_quiz_screen()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -165,17 +210,8 @@ while running:
                 text = text[:-1]
             else:
                 text += event.unicode
-    if show_result_screen:
-        if is_correct(text, img) == True:
-            draw_result_screen(True)
-            img = load_random_image()
-        else:
-            draw_result_screen(False)
-        # Wait for a bit before moving on
-        pygame.time.wait(2000)
-        show_result_screen = False  # Reset the flag
-        text = ''
-    else:
-        draw_quiz_screen()
-
+        mouse_pos = pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEBUTTONDOWN and button.collidepoint(mouse_pos):
+            draw_answer_screen()
+            pygame.time.wait(2000)
 pygame.quit()
