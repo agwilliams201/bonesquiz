@@ -72,41 +72,41 @@ boneslist = ['atlas1.png', 'atlas2.png', 'atlas3.png', 'atlas4.png', 'atlas5.png
     'sphenoid1.png', 'sphenoid2.png', 'sphenoid3.png', 'sphenoid4.png', 'sphenoid5.png']
 show_result_screen = False
 correct_dict = {
-    **{f'atlas{i}.png': 'Atlas' for i in range(1, 6)},
-    **{f'axis{i}.png': 'Axis' for i in range(1, 6)},
-    **{f'lumbar{i}.png': 'Lumbar' for i in range(1, 6)},
-    **{f'sacrum{i}.png': 'Sacrum' for i in range(1, 6)},
-    **{f'coccyx{i}.png': 'Coccyx' for i in range(1, 6)},
-    **{f'scapula{i}.png': 'Scapula' for i in range(1, 6)},
-    **{f'humerus{i}.png': 'Humerus' for i in range(1, 6)},
-    **{f'ulna{i}.png': 'Ulna' for i in range(1, 6)},
-    **{f'radius{i}.png': 'Radius' for i in range(1, 6)},
-    **{f'metacarpals{i}.png': 'Metacarpals' for i in range(1, 6)},
-    **{f'ilium{i}.png': 'Ilium' for i in range(1, 6)},
-    **{f'maxilla{i}.png': 'Maxilla' for i in range(1, 6)},
-    **{f'mandible{i}.png': 'Mandible' for i in range(1, 6)},
-    **{f'temporal{i}.png': 'Temporal' for i in range(1, 6)},
-    **{f'parietal{i}.png': 'Parietal' for i in range(1, 6)},
-    **{f'occipital{i}.png': 'Occipital' for i in range(1, 6)},
-    **{f'vomer{i}.png': 'Vomer' for i in range(1, 6)},
-    **{f'hyoid{i}.png': 'Hyoid' for i in range(1, 6)},
-    **{f'nasal{i}.png': 'Nasal' for i in range(1, 6)},
-    **{f'clavicle{i}.png': 'Clavicle' for i in range(1, 6)},
-    **{f'ribs{i}.png': 'Ribs' for i in range(1, 6)},
-    **{f'sternum{i}.png': 'Sternum' for i in range(1, 6)},
-    **{f'xiphoidprocess{i}.png': 'Xiphoid Process' for i in range(1, 6)},
-    **{f'pubis{i}.png': 'Pubis' for i in range(1, 6)},
-    **{f'ischium{i}.png': 'Ischium' for i in range(1, 6)},
-    **{f'pelvis{i}.png': 'Pelvis' for i in range(1, 6)},
-    **{f'tibia{i}.png': 'Tibia' for i in range(1, 6)},
-    **{f'fibula{i}.png': 'Fibula' for i in range(1, 6)},
-    **{f'patella{i}.png': 'Patella' for i in range(1, 6)},
-    **{f'metatarsals{i}.png': 'Metatarsals' for i in range(1, 6)},
-    **{f'frontal{i}.png': 'Frontal' for i in range(1, 6)},
-    **{f'ethmoid{i}.png': 'Ethmoid' for i in range(1, 6)},
-    **{f'lacrimal{i}.png': 'Lacrimal' for i in range(1, 6)},
-    **{f'zygomatic{i}.png': 'Zygomatic' for i in range(1, 6)},
-    **{f'sphenoid{i}.png': 'Sphenoid' for i in range(1, 6)},
+    **{f'atlas{i}.png': 'atlas' for i in range(1, 6)},
+    **{f'axis{i}.png': 'axis' for i in range(1, 6)},
+    **{f'lumbar{i}.png': 'lumbar' for i in range(1, 6)},
+    **{f'sacrum{i}.png': 'sacrum' for i in range(1, 6)},
+    **{f'coccyx{i}.png': 'coccyx' for i in range(1, 6)},
+    **{f'scapula{i}.png': 'scapula' for i in range(1, 6)},
+    **{f'humerus{i}.png': 'humerus' for i in range(1, 6)},
+    **{f'ulna{i}.png': 'ulna' for i in range(1, 6)},
+    **{f'radius{i}.png': 'radius' for i in range(1, 6)},
+    **{f'metacarpals{i}.png': 'metacarpals' for i in range(1, 6)},
+    **{f'ilium{i}.png': 'ilium' for i in range(1, 6)},
+    **{f'maxilla{i}.png': 'maxilla' for i in range(1, 6)},
+    **{f'mandible{i}.png': 'mandible' for i in range(1, 6)},
+    **{f'temporal{i}.png': 'temporal' for i in range(1, 6)},
+    **{f'parietal{i}.png': 'parietal' for i in range(1, 6)},
+    **{f'occipital{i}.png': 'occipital' for i in range(1, 6)},
+    **{f'vomer{i}.png': 'vomer' for i in range(1, 6)},
+    **{f'hyoid{i}.png': 'hyoid' for i in range(1, 6)},
+    **{f'nasal{i}.png': 'nasal' for i in range(1, 6)},
+    **{f'clavicle{i}.png': 'clavicle' for i in range(1, 6)},
+    **{f'ribs{i}.png': 'ribs' for i in range(1, 6)},
+    **{f'sternum{i}.png': 'sternum' for i in range(1, 6)},
+    **{f'xiphoidprocess{i}.png': 'xiphoid Process' for i in range(1, 6)},
+    **{f'pubis{i}.png': 'pubis' for i in range(1, 6)},
+    **{f'ischium{i}.png': 'ischium' for i in range(1, 6)},
+    **{f'pelvis{i}.png': 'pelvis' for i in range(1, 6)},
+    **{f'tibia{i}.png': 'tibia' for i in range(1, 6)},
+    **{f'fibula{i}.png': 'fibula' for i in range(1, 6)},
+    **{f'patella{i}.png': 'patella' for i in range(1, 6)},
+    **{f'metatarsals{i}.png': 'metatarsals' for i in range(1, 6)},
+    **{f'frontal{i}.png': 'frontal' for i in range(1, 6)},
+    **{f'ethmoid{i}.png': 'ethmoid' for i in range(1, 6)},
+    **{f'lacrimal{i}.png': 'lacrimal' for i in range(1, 6)},
+    **{f'zygomatic{i}.png': 'zygomatic' for i in range(1, 6)},
+    **{f'sphenoid{i}.png': 'sphenoid' for i in range(1, 6)},
 }
 
 def addText():
@@ -145,12 +145,14 @@ def draw_quiz_screen(correct=None):
     screen.blit(bone_image, bone_image_rect)
     
     # Draw the answer button
-    pygame.draw.rect(screen, (228, 195, 173), textbox)
+    pygame.draw.rect(screen, (228, 195, 173), textbox, 0,4)
+    pygame.draw.rect(screen, BLACK, textbox, 2,4)
     txt_surface = font.render(text, True, BLACK)
     screen.blit(txt_surface, (textbox.x+5, textbox.y+5))
 
     #Draw the give up button
-    pygame.draw.rect(screen, (84, 106, 123), button)
+    pygame.draw.rect(screen, (84, 106, 123), button, 0,4)
+    pygame.draw.rect(screen, BLACK, button, 2,4)
     addText()
     pygame.display.flip()
 
@@ -175,7 +177,7 @@ def is_correct(text, image_name):
 def draw_answer_screen():
     # Choose the color and text based on whether the answer is correct
     result_color = GOOD_GREEN
-    result_text = correct_dict[img]
+    result_text = correct_dict[img][0].upper() + correct_dict[img][1:] 
     # Draw the result screen
     screen.fill(result_color)
     text_surface = font.render(result_text, True, WHITE)
@@ -204,6 +206,7 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
+                text = text.lower()
                 draw_result_screen(True)
                 show_result_screen = True
             elif event.key == pygame.K_BACKSPACE:
@@ -215,3 +218,4 @@ while running:
             draw_answer_screen()
             pygame.time.wait(2000)
 pygame.quit()
+
