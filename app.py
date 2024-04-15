@@ -214,7 +214,7 @@ while running:
                 show_result_screen = True
             elif event.key == pygame.K_BACKSPACE:
                 text = text[:-1]
-            else:
+            elif len(text) < 15:
                 text += event.unicode
         mouse_pos = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN and button.collidepoint(mouse_pos):
