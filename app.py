@@ -148,7 +148,10 @@ def draw_quiz_screen(correct=None):
     pygame.draw.rect(screen, (228, 195, 173), textbox, 0,4)
     pygame.draw.rect(screen, BLACK, textbox, 2,4)
     txt_surface = font.render(text, True, BLACK)
-    screen.blit(txt_surface, (textbox.x+5, textbox.y+5))
+    text_width, text_height = txt_surface.get_size()
+    text_x = textbox.centerx - text_width // 2
+    text_y = textbox.centery - text_height // 2
+    screen.blit(txt_surface, (text_x, text_y))
 
     #Draw the give up button
     pygame.draw.rect(screen, (84, 106, 123), button, 0,4)
@@ -218,4 +221,3 @@ while running:
             draw_answer_screen()
             pygame.time.wait(2000)
 pygame.quit()
-
