@@ -3,6 +3,7 @@ import os
 import random
 import sys
 from pygame.locals import *
+import asyncio
 
 # Initialize Pygame
 pygame.init()
@@ -94,7 +95,7 @@ correct_dict = {
     **{f'clavicle{i}.png': 'clavicle' for i in range(1, 6)},
     **{f'ribs{i}.png': 'ribs' for i in range(1, 6)},
     **{f'sternum{i}.png': 'sternum' for i in range(1, 6)},
-    **{f'xiphoidprocess{i}.png': 'xiphoid Process' for i in range(1, 6)},
+    **{f'xiphoidprocess{i}.png': 'xiphoid process' for i in range(1, 6)},
     **{f'pubis{i}.png': 'pubis' for i in range(1, 6)},
     **{f'ischium{i}.png': 'ischium' for i in range(1, 6)},
     **{f'pelvis{i}.png': 'pelvis' for i in range(1, 6)},
@@ -137,7 +138,7 @@ def load_random_image():
 img = load_random_image()  # Load the initial image
 
 # Function to draw the main quiz screen
-def draw_quiz_screen(correct=None):
+def draw_quiz_screen(text):
     screen.fill(STUPID_COLOR)
 
     # Draw the bone image placeholder
@@ -189,35 +190,47 @@ def draw_answer_screen():
     pygame.display.flip()
 
 # Main loop
-running = True
-while running:
-    if show_result_screen:
-        if is_correct(text, img) == True:
-            draw_result_screen(True)
-            pygame.time.wait(2000)
-            img = load_random_image()
-        else:
-            draw_result_screen(False)
-            pygame.time.wait(1000)
-        # Wait for a bit before moving on
-        show_result_screen = False  # Reset the flag
-        text = ''
-    else:
-        draw_quiz_screen()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                text = text.lower()
+async def main():
+    global img
+    running = True
+    text = ''
+    show_result_screen = False
+    img = load_random_image()
+    while running:
+        if show_result_screen:
+            if is_correct(text, img) == True:
                 draw_result_screen(True)
-                show_result_screen = True
-            elif event.key == pygame.K_BACKSPACE:
-                text = text[:-1]
-            elif len(text) < 15:
-                text += event.unicode
-        mouse_pos = pygame.mouse.get_pos()
-        if event.type == pygame.MOUSEBUTTONDOWN and button.collidepoint(mouse_pos):
-            draw_answer_screen()
-            pygame.time.wait(2000)
-pygame.quit()
+                await asyncio.sleep(2)
+                #pygame.time.wait(2000)
+                img = load_random_image()
+            else:
+                draw_result_screen(False)
+                await asyncio.sleep(1)
+                #pygame.time.wait(1000)
+            # Wait for a bit before moving on
+            show_result_screen = False  # Reset the flag
+            text = ''
+        else:
+            draw_quiz_screen(text)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    text = text.lower()
+                    draw_result_screen(True)
+                    show_result_screen = True
+                elif event.key == pygame.K_BACKSPACE:
+                    text = text[:-1]
+                elif len(text) < 15:
+                    text += event.unicode
+            mouse_pos = pygame.mouse.get_pos()
+            if event.type == pygame.MOUSEBUTTONDOWN and button.collidepoint(mouse_pos):
+                draw_answer_screen()
+                await asyncio.sleep(2)
+                #pygame.time.wait(2000)
+        await asyncio.sleep(0)
+    pygame.quit()
+
+
+asyncio.run( main() )
